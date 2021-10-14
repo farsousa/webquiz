@@ -3,8 +3,30 @@
     <head>
         <title>Spring Security Example</title>
     </head>
-    <body>
-        <h1>Welcome!</h1>
+    <body>        
+        <h1>Questions</h1>
+        
+	    <div class="container-question" th:each="questao : ${questoes}">
+        	<div class="question-enunciado" th:text="${questao.enunciado}"></div>
+        	<img class="question-imagem" th:src="${questao.imagem}" />
+        	
+        	<input type="radio" id="alternativa1" th:name="questao + ${questao.id}" th:value="${questao.alternativa1}">
+        	<label class="question-alternativa" th:text="${questao.alternativa1}"></label>
+        	
+        	<input type="radio" id="alternativa2" th:name="questao + ${questao.id}" th:value="${questao.alternativa2}">
+        	<label class="question-alternativa" th:text="${questao.alternativa1}"></label>
+        	
+        	<input type="radio" id="alternativa3" th:name="questao + ${questao.id}" th:value="${questao.alternativa3}">
+        	<label class="question-alternativa" th:text="${questao.alternativa1}"></label>
+        	
+        	<input type="radio" id="alternativa4" th:name="questao + ${questao.id}" th:value="${questao.alternativa4}">
+        	<label class="question-alternativa" th:text="${questao.alternativa1}"></label>
+        	
+        	<input type="radio" id="alternativa5" th:name="questao + ${questao.id}" th:value="${questao.alternativa5}">
+        	<label class="question-alternativa" th:text="${questao.alternativa1}"></label>
+    
+        	<div class="question-explicacao" th:text="${questao.explicacao}"></div>
+        </div>
         
         <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
         

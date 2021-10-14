@@ -17,11 +17,11 @@ public class Usuario implements UserDetails{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column( nullable = false ) // cria esse campo no banco de dados como not null
+	@Column(unique=true, nullable=false)
 	private String email;
-	@Column( nullable = false ) // cria esse campo no banco de dados como not null
+	@Column( nullable = false )
 	private String nome;
-	@Column( nullable = false ) // cria esse campo no banco de dados como not null
+	@Column( nullable = false )
 	private String senha;
 	
 	public Usuario() {}
