@@ -1,10 +1,4 @@
 # QuizWeb
-Uma aplicação web para ajudar estudantes de concursos a treinar seus conhecimentos em diversas disciplinas. 
-Na aplicação, o usuário pode filtrar as questões por disciplina ou pela banca.
-
-# Progresso de Módulos
-Tela de Login
-Cadastro Usuário
-Tela de Questões
+Uma Aplicação WEB MVC feita em Java(Spring) para ajudar estudantes de concursos a treinar seus conhecimentos em diversas disciplinas. Nela, os usuários podem filtrar as questões por disciplina ou pela banca para ter um estudo mais direcionado a seu certame.
 
 
