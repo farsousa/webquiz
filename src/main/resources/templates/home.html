@@ -3,35 +3,69 @@
     <head>
         <title>Spring Security Example</title>
     </head>
-    <body>        
-        <h1>Questions</h1>
-        
-	    <div class="container-question" th:each="questao : ${questoes}">
-        	<div class="question-enunciado" th:text="${questao.enunciado}"></div>
-        	<img class="question-imagem" th:src="${questao.imagem}" />
-        	
-        	<input type="radio" id="alternativa1" th:name="questao + ${questao.id}" th:value="${questao.alternativa1}">
-        	<label class="question-alternativa" th:text="${questao.alternativa1}"></label>
-        	
-        	<input type="radio" id="alternativa2" th:name="questao + ${questao.id}" th:value="${questao.alternativa2}">
-        	<label class="question-alternativa" th:text="${questao.alternativa1}"></label>
-        	
-        	<input type="radio" id="alternativa3" th:name="questao + ${questao.id}" th:value="${questao.alternativa3}">
-        	<label class="question-alternativa" th:text="${questao.alternativa1}"></label>
-        	
-        	<input type="radio" id="alternativa4" th:name="questao + ${questao.id}" th:value="${questao.alternativa4}">
-        	<label class="question-alternativa" th:text="${questao.alternativa1}"></label>
-        	
-        	<input type="radio" id="alternativa5" th:name="questao + ${questao.id}" th:value="${questao.alternativa5}">
-        	<label class="question-alternativa" th:text="${questao.alternativa1}"></label>
+    <body>   
     
-        	<div class="question-explicacao" th:text="${questao.explicacao}"></div>
-        </div>
         
         <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
         
         <p>Click <a onclick="document.querySelector('#form-logout').submit()" href="#">here</a> to logout.</p>
         
         <form id="form-logout" th:action="@{/logout}" method="POST"></form>
+             
+        <h1>Questions</h1>
+        
+	    <div class="container-question" th:each="questao : ${questoes}">
+        	<div class="question-enunciado" th:text="${questao.enunciado}"></div>
+        	<div>
+        		<img class="question-imagem" th:src="${questao.imagem}" />
+        	</div>        	
+        	<div th:if="${questao.alternativa1} != ''">
+        		<input type="radio" id="alternativa1" th:name="questao + ${questao.id}" th:value="${questao.alternativa1}">
+        		<label class="question-alternativa" th:text="${questao.alternativa1}"></label>
+        	</div>
+        	<div th:if="${questao.alternativa2}  != ''">
+        		<input type="radio" id="alternativa2" th:name="questao + ${questao.id}" th:value="${questao.alternativa2}">
+        		<label class="question-alternativa" th:text="${questao.alternativa2}"></label>
+        	</div>
+        	<div th:if="${questao.alternativa3} != ''">
+        		<input type="radio" id="alternativa3" th:name="questao + ${questao.id}" th:value="${questao.alternativa3}">
+        		<label class="question-alternativa" th:text="${questao.alternativa3}"></label>
+        	</div>
+        	<div th:if="${questao.alternativa4} != ''">
+        		<input type="radio" id="alternativa4" th:name="questao + ${questao.id}" th:value="${questao.alternativa4}">
+        		<label class="question-alternativa" th:text="${questao.alternativa4}"></label>
+        	</div>
+        	<div th:if="${questao.alternativa5} != ''">
+        		<input type="radio" id="alternativa5" th:name="questao + ${questao.id}" th:value="${questao.alternativa5}">
+        		<label class="question-alternativa" th:text="${questao.alternativa5}"></label>
+        	</div>    
+        	<div>
+        		<button th:attr="onclick=|verificarResposta('questao' + ${questao.id},'${questao.resposta}', '${questao.explicacao}')|">Responder</button>
+        	</div>
+        	<div th:id="questao + ${questao.id}" th:class="question-resultado + ${questao.id}"></div>
+        </div>
+    
+        
+        <script type="text/javascript">        
+        	function verificarResposta(radioName, resposta, explicacao) {    
+        		let alternativaSelecionada = null;
+        		let radios = document.getElementsByName(radioName);
+        		let resultado = document.getElementById(radioName);
+        		for (let i = 0; i < radios.length; i++) {
+        			if(radios[i].checked) {
+        				alternativaSelecionada = radios[i];
+        			}
+        		}
+        		if(alternativaSelecionada === null) {
+        			resultado.innerHTML = ("Nenhuma alternativa foi selecionada");
+        		}else{
+        			if (alternativaSelecionada.value === resposta) {
+        				resultado.innerHTML = ('Acertou' + '<br/>' + explicacao);
+        			}else {
+        				resultado.innerHTML = ('Errou' + '<br/>' + explicacao);
+        			}
+        		}
+        	}
+        </script>
     </body>
 </html>
