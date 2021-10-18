@@ -4,15 +4,12 @@
         <title>Spring Security Example</title>
     </head>
     <body>   
-    
-        
-        <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
-        
+            
         <p>Click <a onclick="document.querySelector('#form-logout').submit()" href="#">here</a> to logout.</p>
         
         <form id="form-logout" th:action="@{/logout}" method="POST"></form>
              
-        <h1>Questions</h1>
+        <h1>Questions</h1>        
         
 	    <div class="container-question" th:each="questao : ${questoes}">
         	<div class="question-enunciado" th:text="${questao.enunciado}"></div>
