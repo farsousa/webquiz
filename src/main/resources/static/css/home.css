@@ -1,0 +1,82 @@
+main {
+    display: flex;
+    flex-direction: column; 
+}
+
+main .container-question {
+    width: 90%;
+    margin: 0 auto 20px;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 0 2px 1px;
+}
+
+main h1 {
+	text-align: center;
+	margin-bottom: 20px;
+	font-size: 1.5em;
+}
+
+main .question-dados {
+	margin-bottom: 10px;
+}
+
+main .question-dados p {
+	font-weight: bold;
+	text-align: justify;
+}
+
+main .question-dados label {
+	font-weight: normal;
+}
+
+main .question-enunciado {
+	text-align: justify;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+main .question-imagem {
+    display: flex;;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+main .question-alternativa {
+	margin-bottom: 10px;
+}
+
+main .alternativas-questao {
+    display: flex;
+    flex-direction: column;
+}
+
+main .question-explicacao {
+	text-align: justify;
+}
+
+main .question-botao button {
+	width: 100%;
+	padding: 8px 0;
+	box-sizing: border-box;
+	background-color: rgb(2, 2, 91);
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
+}
+
+main .question-botao button:hover {
+	background-color: rgb(16, 16, 196);
+}
+
+@media screen and (min-width: 970px) {
+	
+	main .container-question {
+	    width: 95%;
+	}	
+
+}

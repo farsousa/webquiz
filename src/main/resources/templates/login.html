@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="pt-br">
     <head>
-        <title>Spring Security Example </title>
+        <title> Login </title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="css/style.css" rel="stylesheet" />
+        <link href="css/login.css" rel="stylesheet" />
     </head>
     <body>
-        <form th:action="@{/login}" method="post">
-            <div><label> Email : <input type="text" name="username"/> </label></div>
-            <div><label> Senha: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Entrar"/></div>
-        </form>        
-        <div th:if="${param.error}">
-            Verifique o email ou senha.
-        </div>
-        <div th:if="${param.logout}">
-            Você saiu do sistema.
-        </div>
+    	<nav> 
+            <a href="#">sugerir questões</a>
+            <a href="#">assinar</a>              
+        </nav>
+        <main>                
+            <div id="image">
+                <img src="img/student.svg" alt="student">
+            </div>
+            <div id="text">
+                <h1>login</h1>
+                <p>estude para concursos usando nossa plataforma repleta de questões</p>
+                <form th:action="@{/login}" method="post">
+		            <input type="text" name="username" placeholder="seu email" required/>
+		            <input type="password" name="password" placeholder="sua senha" required/>
+		            <input type="submit" value="Entrar"/>
+		        </form>        
+		        <div th:if="${param.error}">
+		            verifique o email ou senha.
+		        </div>
+		        <div th:if="${param.logout}">
+		            você saiu do sistema.
+		        </div>
+            </div>                
+        </main>        
     </body>
 </html>

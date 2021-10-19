@@ -1,0 +1,32 @@
+main h1 {
+	text-align: center;
+	margin-bottom: 20px;
+	font-size: 1.5em;
+}
+
+main form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    max-width: 400px;
+}
+
+main form select {
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+main form input[type="submit"] {
+    padding: 8px;
+    background-color: rgb(49, 159, 172);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: none;
+}
+
+main form input[type="submit"]:hover {
+    background-color: rgb(81, 193, 206);
+}

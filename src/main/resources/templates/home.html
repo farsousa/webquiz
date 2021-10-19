@@ -1,47 +1,61 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
-        <title>Spring Security Example</title>
+        <title>Questões</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="css/style.css" rel="stylesheet" />
+        <link href="css/home.css" rel="stylesheet" />
     </head>
     <body>   
-            
-        <p>Click <a onclick="document.querySelector('#form-logout').submit()" href="#">here</a> to logout.</p>
-        
-        <form id="form-logout" th:action="@{/logout}" method="POST"></form>
-             
-        <h1>Questions</h1>        
-        
-	    <div class="container-question" th:each="questao : ${questoes}">
-        	<div class="question-enunciado" th:text="${questao.enunciado}"></div>
-        	<div>
-        		<img class="question-imagem" th:src="${questao.imagem}" />
-        	</div>        	
-        	<div th:if="${questao.alternativa1} != ''">
-        		<input type="radio" id="alternativa1" th:name="questao + ${questao.id}" th:value="${questao.alternativa1}">
-        		<label class="question-alternativa" th:text="${questao.alternativa1}"></label>
-        	</div>
-        	<div th:if="${questao.alternativa2}  != ''">
-        		<input type="radio" id="alternativa2" th:name="questao + ${questao.id}" th:value="${questao.alternativa2}">
-        		<label class="question-alternativa" th:text="${questao.alternativa2}"></label>
-        	</div>
-        	<div th:if="${questao.alternativa3} != ''">
-        		<input type="radio" id="alternativa3" th:name="questao + ${questao.id}" th:value="${questao.alternativa3}">
-        		<label class="question-alternativa" th:text="${questao.alternativa3}"></label>
-        	</div>
-        	<div th:if="${questao.alternativa4} != ''">
-        		<input type="radio" id="alternativa4" th:name="questao + ${questao.id}" th:value="${questao.alternativa4}">
-        		<label class="question-alternativa" th:text="${questao.alternativa4}"></label>
-        	</div>
-        	<div th:if="${questao.alternativa5} != ''">
-        		<input type="radio" id="alternativa5" th:name="questao + ${questao.id}" th:value="${questao.alternativa5}">
-        		<label class="question-alternativa" th:text="${questao.alternativa5}"></label>
-        	</div>    
-        	<div>
-        		<button th:attr="onclick=|verificarResposta('questao' + ${questao.id},'${questao.resposta}', '${questao.explicacao}')|">Responder</button>
-        	</div>
-        	<div th:id="questao + ${questao.id}" th:class="question-resultado + ${questao.id}"></div>
-        </div>
-    
+        <nav> 
+        	<a href="/">filtrar questões</a>
+            <a onclick="document.querySelector('#form-logout').submit()" href="#">logout</a>            
+        </nav>
+        <main>
+        	<h1>Questões de Concurso</h1>
+            <div class="container-question" th:each="questao : ${questoes}">
+            	<div class="question-dados">
+            		<p>Instituição: <label  th:text="${questao.instituicao.descricao}"></label> </p>
+            		<p>Ano: <label  th:text="${questao.ano}"></label> </p>
+            		<p>Banca: <label  th:text="${questao.banca.descricao}"></label> </p>
+            		<p>Cargo: <label  th:text="${questao.cargo}"></label> </p>
+            		<p>Nível: <label  th:text="${questao.nivel.descricao}"></label> </p>
+            		<p>Disciplina: <label  th:text="${questao.tematica.disciplina.descricao}"></label> </p>
+            		<p>Temática: <label  th:text="${questao.tematica.descricao}"></label> </p>
+            	</div>
+	        	<div class="question-enunciado" th:text="${questao.enunciado}"></div>
+	        	<div  class="question-imagem">
+	        		<img th:src="${questao.imagem}" />
+	        	</div>        	
+	        	<div class="question-alternativa" th:if="${questao.alternativa1} != ''">
+	        		<input type="radio" id="alternativa1" th:name="questao + ${questao.id}" th:value="${questao.alternativa1}">
+	        		<label class="question-alternativa" th:text="${questao.alternativa1}"></label>
+	        	</div>
+	        	<div class="question-alternativa" th:if="${questao.alternativa2}  != ''">
+	        		<input type="radio" id="alternativa2" th:name="questao + ${questao.id}" th:value="${questao.alternativa2}">
+	        		<label class="question-alternativa" th:text="${questao.alternativa2}"></label>
+	        	</div>
+	        	<div class="question-alternativa" th:if="${questao.alternativa3} != ''">
+	        		<input type="radio" id="alternativa3" th:name="questao + ${questao.id}" th:value="${questao.alternativa3}">
+	        		<label class="question-alternativa" th:text="${questao.alternativa3}"></label>
+	        	</div>
+	        	<div class="question-alternativa" th:if="${questao.alternativa4} != ''">
+	        		<input type="radio" id="alternativa4" th:name="questao + ${questao.id}" th:value="${questao.alternativa4}">
+	        		<label class="question-alternativa" th:text="${questao.alternativa4}"></label>
+	        	</div>
+	        	<div class="question-alternativa" th:if="${questao.alternativa5} != ''">
+	        		<input type="radio" id="alternativa5" th:name="questao + ${questao.id}" th:value="${questao.alternativa5}">
+	        		<label class="question-alternativa" th:text="${questao.alternativa5}"></label>
+	        	</div>    
+	        	<div class="question-explicacao" th:id="questao + ${questao.id}" th:class="question-resultado + ${questao.id}"></div>
+	        	<div class="question-botao">
+	        		<button th:attr="onclick=|verificarResposta('questao' + ${questao.id},'${questao.resposta}', '${questao.explicacao}')|">Responder</button>
+	        	</div>	        	
+	        </div>        	  
+            <form id="form-logout" th:action="@{/logout}" method="POST"></form>
+        </main>
+         
         
         <script type="text/javascript">        
         	function verificarResposta(radioName, resposta, explicacao) {    
@@ -58,8 +72,10 @@
         		}else{
         			if (alternativaSelecionada.value === resposta) {
         				resultado.innerHTML = ('Acertou' + '<br/>' + explicacao);
+        				resultado.style.color = '#228b22';
         			}else {
         				resultado.innerHTML = ('Errou' + '<br/>' + explicacao);
+        				resultado.style.color = '#ff0000';
         			}
         		}
         	}

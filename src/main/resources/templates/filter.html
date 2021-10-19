@@ -2,17 +2,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
-        <title>Filtro</title>
+        <title>Filtro de Questões</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="css/style.css" rel="stylesheet" />
+        <link href="css/filter.css" rel="stylesheet" />
     </head>
     <body>
-        <h1>Filtre as questões!</h1>
-        
-        <form th:action="@{/home}" method="GET">
-        	<select name="tematica">
-        		<option th:each="tematica : ${tematicas}" th:value="${tematica.descricao}"  th:text="${tematica.descricao}"></option>      	
-        	</select>
-        	<input type="submit" value="Enviar">
-        </form>        
-        
+    	<nav> 
+        	<a href="/">filtrar questões</a>
+            <a onclick="document.querySelector('#form-logout').submit()" href="#">logout</a>            
+        </nav>
+        <main>
+        	<h1>filtre as questões por temática!</h1>        
+	        <form th:action="@{/home}" method="GET">
+	        	<select name="tematica">
+	        		<option th:each="tematica : ${tematicas}" th:value="${tematica.descricao}"  th:text="${tematica.descricao}"></option>      	
+	        	</select>
+	        	<input type="submit" value="Enviar">
+	        </form>
+	        <form id="form-logout" th:action="@{/logout}" method="POST"></form> 
+        </main>               
     </body>
 </html>
