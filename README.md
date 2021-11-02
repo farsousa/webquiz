@@ -2,7 +2,7 @@
 A WEB MVC Application made in Java (Spring) to help competition students to train their knowledge in various disciplines. In it, users can filter the questions by content to have a more focused study for their event.
 
 ## :man_shrugging: How Can I Access? :woman_shrugging:
-To access the platform, click <a href="https://quizaplication.herokuapp.com/" target="_blank">here</a> and use the following credential:
+To access the platform, click [here](https://quizaplication.herokuapp.com/) and use the following credential:
 
 **User:** guest
 
