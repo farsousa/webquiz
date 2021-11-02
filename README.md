@@ -4,7 +4,7 @@ A WEB MVC Application made in Java (Spring) to help competition students to trai
 ## :man_shrugging: How Can I Access? :woman_shrugging:
 To access the platform, click [here](https://quizaplication.herokuapp.com/) and use the following credential:
 
-**User:** guest
+**User:** guest@email.com
 
 **Password:** guest
 
